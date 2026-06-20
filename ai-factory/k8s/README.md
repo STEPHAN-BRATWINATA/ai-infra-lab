@@ -13,7 +13,8 @@ Roda numa RTX 3050 6GB via k3s dentro do WSL2 (Ubuntu).
 | GPU agendável | NVIDIA device plugin (`nvidia.com/gpu`) |
 | Fractional GPU | time-slicing (1 GPU → 4 fatias) — análogo do Run:ai |
 | Inferência/serving | Ollama (Deployment) |
-| Endpoint | Service NodePort `:31434` (a "API de tokens") |
+| Endpoint | Service NodePort `:31434` |
+| Gateway / API | LiteLLM — API OpenAI-compatível + contagem de tokens (`:31400`) |
 | Observabilidade | Prometheus + Grafana (no host, lê a GPU física) |
 
 ## Arquivos
@@ -21,6 +22,7 @@ Roda numa RTX 3050 6GB via k3s dentro do WSL2 (Ubuntu).
 - `01-timeslicing-config.yaml` — ConfigMap de time-slicing (replicas: 4)
 - `02-device-plugin.yaml` — DaemonSet do device plugin
 - `03-ollama.yaml` — Deployment + Service do Ollama
+- `04-litellm.yaml` — Gateway LiteLLM (API OpenAI-compatível, "fábrica de tokens")
 - `apply-all.sh` — aplica tudo na ordem
 
 ## Pré-requisitos (já configurados nesta máquina)

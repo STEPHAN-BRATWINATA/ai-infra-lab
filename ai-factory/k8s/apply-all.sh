@@ -4,7 +4,7 @@
 #   wsl -u root bash /mnt/c/Users/Steph/ai-factory/k8s/apply-all.sh
 export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 DIR="$(cd "$(dirname "$0")" && pwd)"
-for f in 00-runtimeclass 01-timeslicing-config 02-device-plugin 03-ollama; do
+for f in 00-runtimeclass 01-timeslicing-config 02-device-plugin 03-ollama 04-litellm; do
   echo "== aplicando $f.yaml =="
   sed 's/\r$//' "$DIR/$f.yaml" | k3s kubectl apply -f -   # sed remove CR (arquivos vem do Windows)
 done
