@@ -1,0 +1,43 @@
+# NVIDIA device plugin: faz o node anunciar a GPU como recurso agendavel
+# (nvidia.com/gpu). Le a config de time-slicing acima via --config-file.
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: nvidia-device-plugin-daemonset
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      name: nvidia-device-plugin-ds
+  template:
+    metadata:
+      labels:
+        name: nvidia-device-plugin-ds
+    spec:
+      runtimeClassName: nvidia
+      priorityClassName: system-node-critical
+      tolerations:
+      - key: nvidia.com/gpu
+        operator: Exists
+        effect: NoSchedule
+      containers:
+      - image: nvcr.io/nvidia/k8s-device-plugin:v0.17.1
+        name: nvidia-device-plugin-ctr
+        args: ["--config-file=/etc/nvidia/dp-config/config.yaml"]
+        env:
+        - name: FAIL_ON_INIT_ERROR
+          value: "false"
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - name: device-plugin
+          mountPath: /var/lib/kubelet/device-plugins
+        - name: dp-config
+          mountPath: /etc/nvidia/dp-config
+      volumes:
+      - name: device-plugin
+        hostPath:
+          path: /var/lib/kubelet/device-plugins
+      - name: dp-config
+        configMap:
+          name: time-slicing-config
