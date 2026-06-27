@@ -1,0 +1,32 @@
+# audit.cmsh — auditoria de estado do cluster BCM
+#
+# Uso:
+#   cmsh -f audit.cmsh
+#
+# Por que -f e nao -c:
+#   cmsh -c "comando" falha via SSH nao-interativo (sem TTY) com o erro
+#   "CMMain::verifyAPI, rpc: Couldn't resolve host name", mesmo com a rede ok.
+#   O modo -f (executa comandos de um arquivo) NAO sofre desse problema.
+#   Ver notes/troubleshooting.md.
+#
+# Nota: cmsh nao tem o comando 'echo' — separe secoes mentalmente pela ordem.
+
+# Dispositivos do cluster (head node + compute nodes)
+device list
+
+# Status resumido (UP/DOWN) de cada device
+device status
+
+# Categorias de nos e qual imagem cada uma usa
+category list
+
+# Imagens de software disponiveis (a default-image vai para os nos via PXE)
+softwareimage list
+
+# Redes definidas (externalnet / internalnet / globalnet)
+network list
+
+# Particoes (a 'base' carrega o nome e config global do cluster)
+partition list
+
+quit

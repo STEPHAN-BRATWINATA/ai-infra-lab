@@ -1,0 +1,10 @@
+# NUNCA versionar artefatos sensiveis do BCM
+*.sql
+*.tar.gz
+*.json
+*.key
+*.pem
+backup-config*
+bcm-db-backup*
+bcm-lab-backup*
+cmd.conf

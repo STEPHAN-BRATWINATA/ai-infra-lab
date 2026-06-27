@@ -1,0 +1,28 @@
+# Saida de exemplo de `cmsh -f audit.cmsh` num head node de lab.
+# (MACs de VirtualBox e IPs privados RFC1918 — sem dados sensiveis)
+
+# device list
+HeadNode      bcm11-headnode   08:00:27:xx:xx:xx   -         10.141.255.254   internalnet   [ UP ]
+PhysicalNode  node001          00:00:00:00:00:00   default   10.141.0.1       internalnet   [ DOWN ], unassigned
+
+# device status
+bcm11-headnode ........... [ UP ]
+node001 .................. [ DOWN ], unassigned
+
+# category list
+# Name     Software image    Nodes
+default    default-image     1
+
+# softwareimage list
+# Name           Path                        Kernel             Nodes
+default-image    /cm/images/default-image    6.8.0-71-generic   1
+
+# network list
+# Name          Type       Netmask bits   Base address   Domain name    DHCP
+externalnet     External   24             10.0.2.0       (dhcp)         no
+globalnet       Global     0              0.0.0.0        cm.cluster
+internalnet     Internal   16             10.141.0.0     eth.cluster
+
+# partition list
+# Name   Cluster name        Head node
+base     <cluster-name>      bcm11-headnode
