@@ -45,6 +45,7 @@ BCM é tópico nomeado da certificação **NVIDIA NCA-AIIO** (domínio de Opera�
 - [`DEEP-DIVE.md`](DEEP-DIVE.md) — deep dive técnico com topologia, hardware e arquitetura
 - [`lab/`](lab/) — laboratórios práticos passo a passo (executados de verdade):
   - [`01-slurm-end-to-end.md`](lab/01-slurm-end-to-end.md) — do job que pendura ao sweep de hiperparâmetros
+  - [`02-gpu-gres-slurm.md`](lab/02-gpu-gres-slurm.md) — GPU como recurso (GRES): binding, fila e a armadilha do device file
 - [`scripts/`](scripts/) — scripts de operação (auditoria, backup) prontos para reuso
 - [`notes/`](notes/) — descobertas de campo e troubleshooting real
 
