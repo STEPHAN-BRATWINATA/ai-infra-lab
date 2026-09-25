@@ -1,0 +1,17 @@
+# Time-slicing: divide 1 GPU fisica em 4 "fatias" agendaveis (fractional GPU).
+# E o conceito que o Run:ai usa para multi-tenancy / alta utilizacao.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: time-slicing-config
+  namespace: kube-system
+data:
+  config.yaml: |
+    version: v1
+    flags:
+      migStrategy: none
+    sharing:
+      timeSlicing:
+        resources:
+        - name: nvidia.com/gpu
+          replicas: 4

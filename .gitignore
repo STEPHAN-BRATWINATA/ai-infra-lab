@@ -1,0 +1,20 @@
+# Binarios compilados (CUDA)
+*.exe
+*.obj
+*.lib
+*.exp
+*.pdb
+
+# Relatorios de profiling
+*.ncu-rep
+*.nsys-rep
+
+# Modelos / dados grandes
+*.gguf
+*.bin
+
+# Binarios de ferramentas de monitoramento (baixados, nao versionar)
+ai-factory/monitoring/exporter/
+ai-factory/monitoring/prometheus/
+ai-factory/monitoring/grafana/
+ai-factory/monitoring/promdata/

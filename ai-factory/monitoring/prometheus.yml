@@ -1,0 +1,8 @@
+# Prometheus — coleta as metricas do nvidia_gpu_exporter (RTX 3050)
+global:
+  scrape_interval: 5s        # coleta a cada 5 segundos
+
+scrape_configs:
+  - job_name: 'nvidia_gpu'
+    static_configs:
+      - targets: ['localhost:9835']   # o exporter da GPU
