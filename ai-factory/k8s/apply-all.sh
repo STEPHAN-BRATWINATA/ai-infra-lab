@@ -1,7 +1,7 @@
 #!/bin/bash
 # Aplica todos os manifests da mini AI Factory na ordem correta.
 # Rode dentro do WSL como root:
-#   wsl -u root bash /mnt/c/Users/Steph/ai-factory/k8s/apply-all.sh
+#   wsl -u root bash /mnt/c/Users/<seu-usuario>/ai-factory/k8s/apply-all.sh
 export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 DIR="$(cd "$(dirname "$0")" && pwd)"
 for f in 00-runtimeclass 01-timeslicing-config 02-device-plugin 03-ollama 04-litellm; do

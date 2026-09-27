@@ -33,7 +33,7 @@ Roda numa RTX 3050 6GB via k3s dentro do WSL2 (Ubuntu).
 ## Como usar
 ```bash
 # aplicar tudo (dentro do WSL, como root)
-wsl -u root bash /mnt/c/Users/Steph/ai-factory/k8s/apply-all.sh
+wsl -u root bash /mnt/c/Users/<seu-usuario>/ai-factory/k8s/apply-all.sh
 
 # baixar um modelo no pod do Ollama
 wsl -u root bash -c "export KUBECONFIG=/etc/rancher/k3s/k3s.yaml; k3s kubectl exec deploy/ollama -- ollama pull qwen2.5:1.5b"
@@ -47,7 +47,7 @@ wsl -u root bash -c "export KUBECONFIG=/etc/rancher/k3s/k3s.yaml; k3s kubectl ex
 
 ## Gestão de recursos
 - O cluster roda enquanto o WSL estiver ativo. Para liberar RAM: `wsl --shutdown`.
-- A RAM do WSL está limitada em `C:\Users\Steph\.wslconfig` (8 GB).
+- A RAM do WSL está limitada em `%USERPROFILE%\.wslconfig` (8 GB).
 
 ## Conceitos demonstrados (certificação NCA-AIIO)
 Orquestração de GPU, RuntimeClass, device plugin, time-slicing vs MIG,

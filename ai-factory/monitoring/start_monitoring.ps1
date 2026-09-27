@@ -2,7 +2,7 @@
 # Exporter (GPU) + Prometheus (coleta) + Grafana (painel). Tudo nativo, sem Docker.
 # Uso:  .\start_monitoring.ps1     (rode novamente apos reiniciar o PC)
 
-$dir = "C:\Users\Steph\ai-factory\monitoring"
+$dir = $PSScriptRoot  # pasta deste script; os binarios baixados ficam aqui (fora do git)
 
 function SobeSeNecessario($nome, $porta, $exe, $argList, $wd) {
   $up = (Test-NetConnection localhost -Port $porta -WarningAction SilentlyContinue).TcpTestSucceeded
